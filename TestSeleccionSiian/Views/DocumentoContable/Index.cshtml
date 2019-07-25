@@ -1,0 +1,280 @@
+﻿@model TestSeleccionSiian.Models.DocumentoContable
+
+@{
+    ViewData["Title"] = "Documento Contable";
+}
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div class="row">
+    <div></div>
+</div>
+<form action="#">
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label" for="Sucursal">Sucursal</label>
+                <input class="form-control" type="text" id="Sucursal" name="Sucursal" value="@Html.DisplayFor(modelItem => Model.Sucursal)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Sucursal" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label" for="TipoDocumento">TipoDocumento</label>
+                <input class="form-control" type="text" id="TipoDocumento" name="TipoDocumento" value="@Html.DisplayFor(modelItem => Model.TipoDocumento)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="TipoDocumento" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="control-label" for="FechaDocumento">FechaDocumento</label>
+                    <input class="form-control" type="datetime-local" data-val="true" data-val-required="The FechaDocumento field is required." id="FechaDocumento" name="FechaDocumento" value="@Html.DisplayFor(modelItem => Model.FechaDocumento)" />
+                    <span class="text-danger field-validation-valid" data-valmsg-for="FechaDocumento" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="control-label" for="FechaContabilizacion">FechaContabilizacion</label>
+                    <input class="form-control" type="datetime-local" data-val="true" data-val-required="The FechaContabilizacion field is required." id="FechaContabilizacion" name="FechaContabilizacion" value="@Html.DisplayFor(modelItem => Model.FechaContabilizacion)" />
+                    <span class="text-danger field-validation-valid" data-valmsg-for="FechaContabilizacion" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label" for="Cedula">Cedula</label>
+                <input class="form-control" type="number" data-val="true" data-val-required="The Cedula field is required." id="Cedula" name="Cedula" value="@Html.DisplayFor(modelItem => Model.Cedula)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Cedula" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label" for="Nombre">Nombre</label>
+                <input class="form-control" type="text" id="Nombre" name="Nombre" value="@Html.DisplayFor(modelItem => Model.Nombre)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Nombre" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label" for="Moneda">Moneda</label>
+                <input class="form-control" type="text" id="Moneda" name="Moneda" value="@Html.DisplayFor(modelItem => Model.Moneda)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Moneda" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label class="control-label" for="Notas">Notas</label>
+                <input class="form-control" type="text" id="Notas" name="Notas" value="@Html.DisplayFor(modelItem => Model.Notas)" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Notas" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <table id ="tablacuentas"class="table table-sm">
+            <thead>
+            <th>Numero</th>
+            <th>NombreCuentas</th>
+            <th>Cedula</th>
+            <th>Nombre Tercero</th>
+            <th>Nota</th>
+            <th>Debito</th>
+            <th>Credito</th>
+            </thead>
+            <tbody>
+                @for(int i=0; i<Model.Cuentas.Count; i++)
+                {
+                    <tr>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Numero" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Numero)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Nombre" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Nombre)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Cedula" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Cedula)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)NombreTercero" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].NombreTercero)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Nota" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Nota)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Debito" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Debito)" disabled/></td>
+                        <td><input class="form-control" id="@Html.DisplayFor(modelItem => i)Credito" type="text" value="@Html.DisplayFor(modelItem => Model.Cuentas[i].Credito)" disabled/></td>
+                        <td><button class="btn btn-warning" id="@Html.DisplayFor(modelItem => i)btn" onclick="validateModified(@Html.DisplayFor(modelItem => i))"><span class="oi oi-image"></span> Edit</button></td>
+                    </tr>
+                }
+
+            <tr id="newitem">
+                <td><input class="form-control" id="newNumero" type="text" value="" /></td>
+                <td><input class="form-control" id="newNombre" type="text" value="" /></td>
+                <td><input class="form-control" id="newCedula" type="text" value="" /></td>
+                <td><input class="form-control" id="newNombreTercero" type="text" value="" /></td>
+                <td><input class="form-control" id="newNota" type="text" value="" /></td>
+                <td><input class="form-control" id="newDebito" type="text" value="" /></td>
+                <td><input class="form-control" id="newCredito" type="text" value="" /></td>
+                <td><button class="btn btn-success" onclick="btnAdd()"><span class="oi oi-image"></span> save</button></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-primary" onclick="validateValue()"> Guardar</button>
+        </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="row">
+                    <label class="control-label" for="tdevito">Total Debito: </label>
+                    <label class="control-label" id="tdebito">Debito</label>
+                </div>
+                <div class="row">
+                    <label class="control-label" for="tcredito">Total Credito: </label>
+                    <label class="control-label" id="tcredito">Credito</label>
+                </div>
+                <div class="row">
+                    <label class="control-label" for="tdiferencia">Total Diferenica: </label>
+                    <label class="control-label" id="tdiferencia">Diferencia</label>
+                </div>
+            </div>
+        </div>
+</form>
+
+<div class="modal fade" id="failedValue" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Los Creditos deben ser iguales a los debitos
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+    <form asp-action="View">
+        <div class="row">
+            <div class="col-md-4">
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Sucursal" class="control-label"></label>
+                    <input asp-for="Sucursal" class="form-control" />
+                    <span asp-validation-for="Sucursal" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TipoDocumento" class="control-label"></label>
+                    <input asp-for="TipoDocumento" class="form-control" />
+                    <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FechaDocumento" class="control-label"></label>
+                        <input asp-for="FechaDocumento" class="form-control" />
+                        <span asp-validation-for="FechaDocumento" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FechaContabilizacion" class="control-label"></label>
+                        <input asp-for="FechaContabilizacion" class="form-control" />
+                        <span asp-validation-for="FechaContabilizacion" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Cedula" class="control-label"></label>
+                    <input asp-for="Cedula" class="form-control" />
+                    <span asp-validation-for="Cedula" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Moneda" class="control-label"></label>
+                    <input asp-for="Moneda" class="form-control" />
+                    <span asp-validation-for="Moneda" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Notas" class="control-label"></label>
+                    <input asp-for="Notas" class="form-control" />
+                    <span asp-validation-for="Notas" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+            <!--
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cedula" class="control-label"></label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreTercero" class="control-label"></label>
+                <input asp-for="NombreTercero" class="form-control" />
+                <span asp-validation-for="NombreTercero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota" class="control-label"></label>
+                <input asp-for="Nota" class="form-control" />
+                <span asp-validation-for="Nota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nobito" class="control-label"></label>
+                <input asp-for="Nobito" class="form-control" />
+                <span asp-validation-for="Nobito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Credito" class="control-label"></label>
+                <input asp-for="Credito" class="form-control" />
+                <span asp-validation-for="Credito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+    </form>
+-->
